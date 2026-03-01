@@ -1,0 +1,178 @@
+.container {
+  display: flex;
+  flex-direction: column; /* Row 1: Navbar | Row 2: Content Area */
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+}
+
+/* NEW: This container ensures everything sits strictly BELOW the navbar */
+.contentWrapper {
+  display: flex;
+  flex-direction: row; /* Main Content on left, Sidebar on right */
+  flex-grow: 1;
+  height: calc(100vh - 45px); /* Forces height to respect the 45px navbar */
+  overflow: hidden;
+  position: relative;
+}
+
+.mainContent {
+  flex-grow: 1;
+  display: flex;
+  padding: 2rem;
+  gap: 2rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.4); 
+  border: 2px var(--border-style) var(--accent-color);
+  border-radius: 15px;
+  padding: 20px;
+  height: 100%;
+  overflow-y: auto;
+  color: var(--text-main);
+  transition: all 0.3s ease;
+}
+
+/* --- THEMED HEADER STYLE --- */
+.headerBox {
+  display: inline-block;
+  background-color: var(--header-bg);
+  border: 2px var(--border-style) var(--text-main);
+  border-radius: var(--header-radius, 4px); 
+  padding: 5px 15px;
+  margin-bottom: 20px;
+  box-shadow: var(--header-shadow);
+  transition: all 0.3s ease;
+}
+
+.headerTitle {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--text-main);
+  font-family: inherit;
+  font-weight: 900;
+  text-transform: none; 
+  letter-spacing: 0.5px;
+}
+
+/* --- SIDEBAR (DayView) - Now an object that takes space --- */
+.sidebar {
+  /* REMOVED: position fixed and top 0 */
+  width: 350px;
+  height: 100%;
+  background-color: var(--bg-color);
+  border-left: 2px var(--border-style) var(--accent-color);
+  padding: 2rem;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Logic to hide the sidebar within the flex flow */
+.sidebarHidden {
+  width: 0;
+  padding: 0;
+  border-left: none;
+  overflow: hidden;
+}
+
+/* --- INPUTS --- */
+.inputGroup {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.timeWrapper {
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  border: 1px solid var(--line-color);
+  border-radius: 4px;
+  padding: 5px;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.05);
+}
+
+.timeSubInput {
+  border: none;
+  background: transparent;
+  width: 70px;
+  text-align: center;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--text-main);
+  font-weight: bold;
+  outline: none;
+}
+
+.timeSeparator {
+  color: var(--line-color);
+  font-weight: bold;
+}
+
+.inputField {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid var(--line-color);
+  border-radius: 4px;
+  background-color: transparent;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.inputField:focus {
+  border-color: var(--accent-color);
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.actionButton {
+  background: transparent;
+  border: 1px solid var(--line-color);
+  border-radius: 4px;
+  color: var(--text-main);
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.actionButton:hover {
+  background: var(--header-bg);
+  border-color: var(--text-main);
+}
+
+/* --- OVERLAYS --- */
+.overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal {
+  background: white;
+  padding: 2rem;
+  border: 2px var(--border-style) var(--text-main);
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 8px 8px 0px var(--accent-color);
+}
